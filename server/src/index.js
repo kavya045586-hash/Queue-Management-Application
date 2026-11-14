@@ -9,6 +9,7 @@ import { User, Queue, Token } from './models.js';
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.get('/', (req, res) => res.send('Queue Management API is running'));
 
 const wrap = (fn) => (req, res, next) => fn(req, res, next).catch(next);
 const sign = (u) => jwt.sign({ id: u._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
